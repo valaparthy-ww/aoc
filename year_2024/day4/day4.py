@@ -22,7 +22,7 @@ def find_vertical(line):
 def find_diagonals(matrix):
 	"""
 	assuming this will be a square matrix
-	for each iteration, we need to traverse top-bottom, left-right, 4 directions
+	for each iteration, we need to traverse top->bottom, left->right, 4 directions
 	
 	"""
 	diagonals_count = 0
@@ -30,7 +30,7 @@ def find_diagonals(matrix):
 	while i < len(matrix):
 		j = 0
 		while j < len(matrix[i]):
-			# top-bottom, left-right,((0,0),(1,1),(2,2),(3,3))
+			# top->bottom, left->right, example: ((0,0),(1,1),(2,2),(3,3))
 			try:
 				tblt = matrix[i][j] + matrix[i + 1][j + 1] + matrix[i + 2][j + 2] + matrix[i + 3][j + 3]
 				if tblt == search_term:
@@ -38,7 +38,7 @@ def find_diagonals(matrix):
 					# print((i, j), (i + 1, j + 1), (i + 2, j + 2), (i + 3, j + 3))
 			except IndexError as ex:
 				pass
-			# bottom-top, left-right, ((3,0),(2,1),(1,2),(0,3))
+			# bottom->top, left->right, example: ((3,0),(2,1),(1,2),(0,3))
 			try:
 				btlr = matrix[i + 3][j] + matrix[i + 2][j + 1] + matrix[i + 1][j + 2] + matrix[i][j + 3]
 				if btlr == search_term:
@@ -46,7 +46,7 @@ def find_diagonals(matrix):
 					# print((i+3, j), (i + 2, j + 1), (i + 1, j + 2), (i, j + 3))
 			except IndexError as ex:
 				pass
-			# top-bottom, right-left, ((0,3),(1,2),(2,1),(3,0))
+			# top->bottom, right->left, example: ((0,3),(1,2),(2,1),(3,0))
 			try:
 				tbrl = matrix[i][j + 3] + matrix[i + 1][j + 2] + matrix[i + 2][j + 1] + matrix[i + 3][j]
 				if tbrl == search_term:
@@ -54,7 +54,7 @@ def find_diagonals(matrix):
 					# print((i, j+3), (i + 1, j + 2), (i + 2, j + 1), (i+3, j))
 			except IndexError as ex:
 				pass
-			# bottom-top, right-left, ((3,3),(2,2),(1,1),(0,0))
+			# bottom->top, right->left, example: ((3,3),(2,2),(1,1),(0,0))
 			try:
 				btrl = matrix[i + 3][j + 3] + matrix[i + 2][j + 2] + matrix[i + 1][j + 1] + matrix[i][j]
 				if btrl == search_term:
