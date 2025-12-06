@@ -40,9 +40,7 @@ def main():
 def check_value_is_fresh(merged_fresh_range, available_range):
     """Check if available value overlaps with existing merged range"""
     merged_range = merged_fresh_range+[available_range]
-    if len(merge_overlap_ranges(merged_range)) == len(merged_fresh_range):
-        return 1
-    return 0
+    return len(merge_overlap_ranges(merged_range)) == len(merged_fresh_range)
 
 
 if __name__ == "__main__":
